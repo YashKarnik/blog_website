@@ -29,6 +29,7 @@ export default class App extends Component {
             exact
             component={EditBlog}
           />
+
           <Footer />
         </div>
       </Router>

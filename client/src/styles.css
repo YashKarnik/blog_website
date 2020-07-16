@@ -4,9 +4,6 @@ footer {
   bottom: 5%;
   width: 100%;
   height: 2.5rem;
-  border-style: solid none none none;
-  border-color: gray;
-  border-width: 2px;
 }
 
 footer p {
@@ -23,6 +20,10 @@ footer p {
   height: 3rem;
   width: 2.7rem;
   padding: 0px;
-  /* margin: 0px 0px 0px 650px; */
   fill: red;
+}
+
+.user {
+  display: inline-block;
+  text-align: center;
 }

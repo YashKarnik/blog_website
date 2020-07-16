@@ -17,6 +17,29 @@ Router.route('/delete').delete(authMiddleware, (req, res) => {
     )
     .catch((err) => res.json(`ERROR!!! ${err}`))
 })
+Router.route('/update-username').post(authMiddleware, (req, res) => {
+  const { username } = req.body
+  User.findByIdAndUpdate(res.userID.id, { username })
+    .then((users) => {
+      res.status(200).json({ msg: 'Updated Successfully', users })
+      // console.log(users)
+    })
+    .catch((err) => {
+      res.json({ msg: 'ExistingUser', err: err })
+    })
+})
+Router.route('/update-password').post(authMiddleware, (req, res) => {
+  const { password } = req.body
+  const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+  User.findByIdAndUpdate(res.userID.id, { password: hashedPassword })
+    .then((users) => {
+      res.status(200).json({ msg: 'Updated Successfully', users })
+      // console.log(users)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 Router.route('/add').post((req, res) => {
   const { username, email, password } = req.body

@@ -10,7 +10,8 @@ export default function dangerAlertcomponent(props) {
         type='button'
         className='close'
         data-dismiss='alert'
-        aria-label='Close'>
+        aria-label='Close'
+        onClick={() => props.clickedProp(true, props.flag)}>
         <span aria-hidden='true'>&times;</span>
       </button>
     </div>

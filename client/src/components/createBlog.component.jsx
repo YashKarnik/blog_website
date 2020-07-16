@@ -14,10 +14,14 @@ export default class createBlogComponent extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.resetAlertFlagFunction = this.resetAlertFlagFunction.bind(this)
   }
   handleChange(e) {
     const { name, value } = e.target
     this.setState({ [name]: value })
+  }
+  resetAlertFlagFunction(x, y) {
+    this.setState({ [y]: !x })
   }
   handleSubmit(e) {
     e.preventDefault()
@@ -48,7 +52,12 @@ export default class createBlogComponent extends Component {
           {this.state.emptyFieldsFlag ? (
             <div>
               <br />
-              <Alert message='Empty Fields Disallowed' type='danger' />
+              <Alert
+                message='Empty Fields Disallowed'
+                type='danger'
+                flag='emptyFieldsFlag'
+                clickedProp={this.resetAlertFlagFunction}
+              />
             </div>
           ) : null}
           {this.state.successFlag ? (

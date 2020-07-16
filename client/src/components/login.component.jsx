@@ -13,8 +13,11 @@ export default class Login extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.resetAlertFlagFunction = this.resetAlertFlagFunction.bind(this)
   }
-
+  resetAlertFlagFunction(x, y) {
+    this.setState({ [y]: !x })
+  }
   handleChange(e) {
     const { name, value } = e.target
     this.setState({ [name]: value })
@@ -31,7 +34,7 @@ export default class Login extends Component {
           localStorage.setItem('username', res.data.user.username)
           console.log(res.data.user, localStorage.getItem('token'))
           this.setState({ email: '', password: '' })
-          window.location = '/' + localStorage.getItem('username') + '/create'
+          window.location = '/' + localStorage.getItem('username') + '/myBlogs'
         })
         .catch((err) => this.setState({ incorrectFieldsFlag: true }))
     }
@@ -41,10 +44,20 @@ export default class Login extends Component {
       <div className='container'>
         <h1>Login</h1>
         {this.state.emptyFieldsFlag ? (
-          <Alert message='Empty fields Disallowed!' type='danger' />
+          <Alert
+            message='Empty fields Disallowed!'
+            type='danger'
+            clickedProp={this.resetAlertFlagFunction}
+            flag='emptyFieldsFlag'
+          />
         ) : null}
         {this.state.incorrectFieldsFlag ? (
-          <Alert message='Incorrect Credentials!' type='danger' />
+          <Alert
+            message='Incorrect Credentials!'
+            type='danger'
+            clickedProp={this.resetAlertFlagFunction}
+            flag='incorrectFieldsFlag'
+          />
         ) : null}
         <hr />
         <form onSubmit={this.handleSubmit} autoComplete='off'>

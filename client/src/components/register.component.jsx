@@ -13,10 +13,14 @@ export default class Login extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.resetAlertFlagFunction = this.resetAlertFlagFunction.bind(this)
   }
   handleChange(e) {
     const { name, value } = e.target
     this.setState({ [name]: value })
+  }
+  resetAlertFlagFunction(x, y) {
+    this.setState({ [y]: !x })
   }
   handleSubmit(e) {
     e.preventDefault()
@@ -38,12 +42,19 @@ export default class Login extends Component {
         <h1>Register</h1>
         <hr />
         {this.state.emptyFieldsFlag ? (
-          <Alert message='Empty Fields Disallowed!' type='danger' />
+          <Alert
+            message='Empty Fields Disallowed!'
+            type='danger'
+            clickedProp={this.resetAlertFlagFunction}
+            flag='emptyFieldsFlag'
+          />
         ) : null}
         {this.state.invalidFieldsFlag ? (
           <Alert
             message='User Already exists.Please select different username/email'
             type='danger'
+            clickedProp={this.resetAlertFlagFunction}
+            flag='invalidFieldsFlag'
           />
         ) : null}
         <form onSubmit={this.handleSubmit} autoComplete='off'>

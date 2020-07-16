@@ -18,5 +18,6 @@ PORT = process.env.PORT || 5000
 app.use('/user', require('./routes/user'))
 app.use('/blog', require('./routes/blog'))
 app.use('/auth', require('./routes/auth'))
+app.use('/feedback', require('./routes/feedback'))
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))

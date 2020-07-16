@@ -21,7 +21,7 @@ Router.route('/add').post(authMiddleware, (req, res) => {
     .save()
     .then(() => res.status(200).json({ msg: 'blog Added', newBlog }))
     .catch((err) => {
-      console.log(err)
+      // console.log(err)
       res.json({ msg: 'Error in saving', error: err })
     })
 })
