@@ -9,7 +9,6 @@ export default class logoutComponent extends Component {
     this.state = {
       comment: '',
       submitSuccessFlag: false,
-      emptyCommentFlag: false,
     }
     this.handleLogout = this.handleLogout.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,12 +26,16 @@ export default class logoutComponent extends Component {
     const { name, value } = e.target
     this.setState({ [name]: value })
   }
-  handleSubmit() {
-    if (this.state.comment.length !== 0) {
-      Axios.post('/feedback/add', { comment: this.state.comment }).then(() =>
+  handleSubmit(e) {
+    e.preventDefault()
+    if (this.state.comment.length === 0) {
+      console.log('¯\\_(ツ)_/¯')
+    } else {
+      Axios.post('/feedback/add', { comment: this.state.comment }).then(() => {
         this.setState({ submitSuccessFlag: true })
-      )
-    } else this.resetAlertFlagFunction(true, 'submitSuccessFlag')
+        this.setState({ comment: '' })
+      })
+    }
   }
   resetAlertFlagFunction(x, y) {
     this.setState({ [y]: !x })
@@ -51,6 +54,7 @@ export default class logoutComponent extends Component {
             flag='submitSuccessFlag'
           />
         ) : null}
+
         <form onSubmit={this.handleSubmit}>
           <h3>
             Let me know what you think about this website.Your submission will
@@ -75,12 +79,15 @@ export default class logoutComponent extends Component {
         <br />
         <hr />
         <form onSubmit={this.handleLogout}>
-          <button className='btn btn-primary btn-lg btn-block' type='submit'>
+          <button
+            className='btn btn-danger btn-lg btn-block'
+            type='submit'
+            style={{ width: '25%', margin: '0px auto 0px auto' }}>
             <Logo
               className='navbar-brand'
               style={{
-                height: '3rem',
-                width: '2.7rem',
+                height: '2rem',
+                width: '2rem',
                 padding: '0px',
                 margin: '0px 0px 0px 0px',
               }}

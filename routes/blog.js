@@ -2,16 +2,17 @@ require('dotenv').config()
 const Router = require('express').Router()
 const Blog = require('../models/blog.model')
 const authMiddleware = require('../middleware/auth.middleware')
-Router.route('/').get((req, res) => {
-  Blog.find()
-    .then((users) => res.json(users))
-    .catch((err) => res.status(400).json(`ERROR!!! ${err}`))
-})
 
 Router.route('/all-blogs').get(authMiddleware, (req, res) => {
   Blog.find({ userID: res.userID.id })
-    .then((users) => res.json(users))
-    .catch((err) => res.status(400).json(`ERROR!!! ${err}`))
+    .then((users) => {
+      res.json(users)
+      // console.log(users)
+    })
+    .catch((err) => {
+      res.status(400).json(`ERROR!!! ${err}`)
+      // console.log(err)
+    })
 })
 
 Router.route('/add').post(authMiddleware, (req, res) => {
@@ -47,4 +48,9 @@ Router.route('/update/:id').patch(authMiddleware, (req, res) => {
     .then((user) => res.status(200).json({ msg: 'Updated Successfully', user }))
     .catch((err) => res.json({ msg: `ERROR!!! ${err}` }))
 })
+// Router.route('/:id').get(authMiddleware, (req, res) => {
+//   Blog.findById({ ...req.params })
+//     .then((users) => res.json(users))
+//     .catch((err) => res.status(400).json(`ERROR!!! ${err}`))
+// })
 module.exports = Router

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ReactComponent as Logo } from '../assets/confirm.svg'
 import Axios from 'axios'
 import Alert from './alert.component'
-export default class changeUsernameComponent extends Component {
+export default class changeEmailComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,12 +31,10 @@ export default class changeUsernameComponent extends Component {
     if (this.state.username.length === 0) {
       this.setState({ emptyFieldsFlag: true })
       return null
-    } else if (this.state.username.indexOf('@') !== -1) {
-      this.setState({ containsAmpersand: true })
     } else {
       Axios.post(
-        '/user/update-username',
-        { username: this.state.username },
+        '/user/update-email',
+        { email: this.state.username },
         { headers: { 'x-auth-token': localStorage.getItem('token') } }
       )
         .then((res) => {
@@ -45,7 +43,6 @@ export default class changeUsernameComponent extends Component {
             this.setState({ invalidUsername: true })
           else {
             this.setState({ changeSuccess: true })
-            localStorage.setItem('username', this.state.username)
             setInterval(
               () =>
                 (window.location =
@@ -69,22 +66,15 @@ export default class changeUsernameComponent extends Component {
           {this.state.changeSuccess ? (
             <Alert
               type='success'
-              message='Username changed'
+              message='Email changed'
               clickedProp={this.resetAlertFlagFunction}
             />
           ) : null}
-          {this.state.containsAmpersand ? (
-            <Alert
-              type='warning'
-              message='Username cannot contain `@`'
-              clickedProp={this.resetAlertFlagFunction}
-              flag='containsAmpersand'
-            />
-          ) : null}
+
           {this.state.invalidUsername ? (
             <Alert
               type='danger'
-              message='Username already exits.'
+              message='Email already exists.Please select a differrent one'
               clickedProp={this.resetAlertFlagFunction}
               flag='invalidUsername'
             />
@@ -99,9 +89,9 @@ export default class changeUsernameComponent extends Component {
           ) : null}
           <input
             className='form-control'
-            placeholder='New username'
+            placeholder='New email'
             name='username'
-            type='username'
+            type='email'
             value={this.state.username}
             onChange={this.handleChange}
           />

@@ -50,7 +50,7 @@ export default class createBlogComponent extends Component {
   render() {
     return (
       <div>
-        <Navbar username={this.props.match.username} />
+        <Navbar username={localStorage.getItem('username')} />
         <form onSubmit={this.handleSubmit} autoComplete='off'>
           {this.state.emptyFieldsFlag ? (
             <div>

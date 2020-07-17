@@ -11,8 +11,8 @@ export default function navbarComponent(props) {
           <Logo
             className='navbar-brand'
             style={{
-              height: '3rem',
-              width: '2.7rem',
+              height: '2.7rem',
+              width: '2rem',
               padding: '0px',
               margin: '0px 15px 0px 0px',
             }}
@@ -20,7 +20,7 @@ export default function navbarComponent(props) {
 
           <li className='navbar-item'>
             <Link to={`/${props.username}/myBlogs`} className='navbar-brand'>
-              Hi, {props.username}
+              Hi, @{props.username || localStorage.getItem('username')}
             </Link>
           </li>
           <li className='navbar-item'>

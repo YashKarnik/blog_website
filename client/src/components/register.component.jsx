@@ -10,6 +10,7 @@ export default class Login extends Component {
       password: '',
       emptyFieldsFlag: false,
       invalidFieldsFlag: false,
+      containsAmersand: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,6 +28,8 @@ export default class Login extends Component {
     if (this.state.email.length === 0 || this.state.password.length === 0) {
       console.log('empty fields!!')
       this.setState({ emptyFieldsFlag: true })
+    } else if (this.state.username.indexOf('@') !== -1) {
+      this.setState({ containsAmersand: true })
     } else {
       Axios.post('/user/add', { ...this.state })
         .then((res) => {
@@ -55,6 +58,14 @@ export default class Login extends Component {
             type='danger'
             clickedProp={this.resetAlertFlagFunction}
             flag='invalidFieldsFlag'
+          />
+        ) : null}
+        {this.state.containsAmersand ? (
+          <Alert
+            message='Username connot contain `@` '
+            type='warning'
+            clickedProp={this.resetAlertFlagFunction}
+            flag='containsAmersand'
           />
         ) : null}
         <form onSubmit={this.handleSubmit} autoComplete='off'>

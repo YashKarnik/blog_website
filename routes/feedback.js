@@ -6,13 +6,11 @@ Router.route('/add').post((req, res) => {
   const newFbComment = new Feedback({ comment: req.body.comment })
   newFbComment
     .save()
-    .then((res) => {
+    .then((resp) => {
       res.status(200).json({ msg: 'Added Successfully' })
-      console.log(res)
     })
     .catch((err) => {
       res.status(400).json({ msg: 'Error in saving' })
-      console.log(err)
     })
 })
 

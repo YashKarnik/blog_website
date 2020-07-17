@@ -40,6 +40,17 @@ Router.route('/update-password').post(authMiddleware, (req, res) => {
       console.log(err)
     })
 })
+Router.route('/update-email').post(authMiddleware, (req, res) => {
+  const { email } = req.body
+  User.findByIdAndUpdate(res.userID.id, { email: email })
+    .then((users) => {
+      res.status(200).json({ msg: 'Updated Successfully', users })
+      // console.log(users)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 Router.route('/add').post((req, res) => {
   const { username, email, password } = req.body

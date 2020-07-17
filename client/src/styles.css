@@ -1,3 +1,12 @@
+#root {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  background-image: url('./assets/background/gplay.png');
+}
+
 footer {
   position: absolute;
   text-align: center;
@@ -16,9 +25,16 @@ footer p {
   fill: blue;
 }
 
+.Edit-n-Delete {
+  height: 25px;
+  width: 25px;
+  padding: 0px;
+  margin: 0px 10px 0px 10px;
+}
+
 .logout-btn {
-  height: 3rem;
-  width: 2.7rem;
+  height: 2.7rem;
+  width: 2rem;
   padding: 0px;
   fill: red;
 }
