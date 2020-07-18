@@ -5,13 +5,13 @@ export default function footerComponent() {
   return (
     <div>
       <footer className='container'>
-        <p style={{ padding: '0px 0px 0px 0px' }}>
+        <div style={{ padding: '0px 0px 0px 0px' }}>
           <a href='https://github.com/YashKarnik'>
             <Logo
               className='navbar-brand social-media-Github'
               style={{
-                height: '2.5rem',
-                width: '2.5rem',
+                height: '2rem',
+                width: '2rem',
                 padding: '0px',
                 margin: '0px 15px 0px 0px',
               }}
@@ -21,14 +21,14 @@ export default function footerComponent() {
             <Logo1
               className='navbar-brand social-media-Linkedin'
               style={{
-                height: '2.5rem',
-                width: '2.5rem',
+                height: '2rem',
+                width: '2rem',
                 padding: '0px',
                 margin: '0px 0px 0px 0px',
               }}
             />
           </a>
-        </p>
+        </div>
       </footer>
     </div>
   )

@@ -14,10 +14,12 @@ function BlogEntry(props) {
     } else {
       return (
         <div style={{ margin: '0px 0px 0px 10px' }}>
-          <span>{content.substring(0, 100)}</span>
+          <p style={{ display: 'inline' }}>{content.substring(0, 100)}</p>
 
           {readMoreFlag ? (
-            <span>{content.substring(100, content.length - 1)}</span>
+            <p style={{ display: 'inline' }}>
+              {content.substring(100, content.length - 1)}
+            </p>
           ) : (
             <Link
               to='#'
