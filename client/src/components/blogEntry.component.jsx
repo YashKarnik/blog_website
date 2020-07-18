@@ -18,7 +18,7 @@ function BlogEntry(props) {
 
           {readMoreFlag ? (
             <p style={{ display: 'inline' }}>
-              {content.substring(100, content.length - 1)}
+              {content.substring(100, content.length)}
             </p>
           ) : (
             <Link
