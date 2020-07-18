@@ -4,7 +4,7 @@ import { ReactComponent as Logo1 } from '../assets/linkedin.svg'
 export default function footerComponent() {
   return (
     <div>
-      <footer className='container'>
+      <footer>
         <div style={{ padding: '0px 0px 0px 0px' }}>
           <a href='https://github.com/YashKarnik'>
             <Logo
