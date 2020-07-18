@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './navbar.component'
 import Axios from 'axios'
-
+import { ReactComponent as Logo } from '../assets/add.svg'
 import { Link } from 'react-router-dom'
 import BlogEntry from './blogEntry.component'
 
@@ -56,6 +56,17 @@ export default class blogListComponent extends Component {
             />
           )
         })}
+        <div style={{ textAlign: 'center' }}>
+          {this.state.obtainedData.length !== 0 && (
+            <Link to={`/${localStorage.getItem('username')}/create`}>
+              <button
+                className='btn btn-dark btn-sm'
+                style={{ borderRadius: '100%', textAlign: 'center' }}>
+                <Logo style={{ height: '2rem', width: '1.7rem' }} />
+              </button>
+            </Link>
+          )}
+        </div>
       </div>
     )
   }
