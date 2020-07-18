@@ -38,7 +38,9 @@ export default function navbarComponent(props) {
             </Link>
           </li>
         </ul>
-        <ul className='navbar-right' style={{ margin: '0pc 0px 0px auto' }}>
+        <ul
+          className='navbar-item'
+          style={{ margin: '0px 0px 0px auto', padding: '0px' }}>
           <li>
             <Link to={'/' + localStorage.getItem('username') + '/logout'}>
               <Logo1 className='logout-btn' />
