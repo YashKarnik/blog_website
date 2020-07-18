@@ -39,6 +39,10 @@ function BlogEntry(props) {
     <div>
       <h3 style={{ margin: '0px 0px 0px 10px' }}>{props.element.title}</h3>
       {displayContent(props.element.content)}
+      <em style={{ margin: '0px 0px 0px 10px' }}>
+        Created on: {props.element.createdAt.substring(0, 10)}
+      </em>
+      <br />
       <br />
       <Link
         to='#'

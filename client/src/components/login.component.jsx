@@ -79,7 +79,9 @@ export default class Login extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <input className='btn btn-primary btn-lg btn-block' type='Submit' />
+          <button className='btn btn-primary btn-lg btn-block' type='Submit'>
+            Login
+          </button>
           <br />
         </form>
       </div>

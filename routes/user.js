@@ -2,6 +2,7 @@ const Router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user.model')
+const Blog = require('../models/blog.model')
 const authMiddleware = require('../middleware/auth.middleware')
 
 Router.route('/').get((req, res) => {
@@ -11,11 +12,18 @@ Router.route('/').get((req, res) => {
 })
 
 Router.route('/delete').delete(authMiddleware, (req, res) => {
-  User.findByIdAndDelete(res.userID.id)
-    .then((users) =>
-      res.status(400).json({ msg: 'Deleted Successfully', users })
-    )
-    .catch((err) => res.json(`ERROR!!! ${err}`))
+  User.findOneAndDelete({ _id: res.userID.id })
+    .then((users) => {
+      res.status(200).json({ msg: 'Deleted Successfully', users })
+      // console.log(users)
+    })
+    .catch((err) => {
+      res.json({ err: err })
+      // console.log(err)
+    })
+  Blog.deleteMany({ userID: res.userID.id })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
 })
 Router.route('/update-username').post(authMiddleware, (req, res) => {
   const { username } = req.body

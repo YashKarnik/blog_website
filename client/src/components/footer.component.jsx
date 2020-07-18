@@ -8,10 +8,10 @@ export default function footerComponent() {
         <p style={{ padding: '0px 0px 0px 0px' }}>
           <a href='https://github.com/YashKarnik'>
             <Logo
-              className='navbar-brand'
+              className='navbar-brand social-media-Github'
               style={{
-                height: '3rem',
-                width: '2.7rem',
+                height: '2.5rem',
+                width: '2.5rem',
                 padding: '0px',
                 margin: '0px 15px 0px 0px',
               }}
@@ -19,10 +19,10 @@ export default function footerComponent() {
           </a>
           <a href='https://www.linkedin.com/in/yash-karnik-2677a2183/'>
             <Logo1
-              className='navbar-brand'
+              className='navbar-brand social-media-Linkedin'
               style={{
-                height: '3rem',
-                width: '2.7rem',
+                height: '2.5rem',
+                width: '2.5rem',
                 padding: '0px',
                 margin: '0px 0px 0px 0px',
               }}

@@ -4,66 +4,6 @@ import Axios from 'axios'
 
 import { Link } from 'react-router-dom'
 import BlogEntry from './blogEntry.component'
-// const BlogEntry = (props) => {
-//   const [readMoreFlag, setReadMoreFlag] = useState(false)
-// ///////////////////
-//   function displayContent(content) {
-//     if (content.length < 100) {
-//       return <p>{content}</p>
-//     } else {
-//       return (
-//         <p>
-//           {content.substring(0, 100)}
-//           {!readMoreFlag && (
-//             <Link onClick={() => setReadMoreFlag({ readMoreFlag: true })}>
-//               ....read more
-//             </Link>
-//           )}
-//           {readMoreFlag && <p>{content.substring(101, content.length - 1)}</p>}
-//         </p>
-//       )
-//     }
-//   }
-// //////////////////////
-
-//   return (
-//     <div>
-//       <h3>{props.element.title}</h3>
-//       <p>{displayContent(props.element.content)}</p>
-//       <Link
-//         to='#'
-//         onClick={() => {
-//           props.deleteBlogProp(props.element._id)
-//         }}>
-//         <Logo
-//           className=' Edit-n-Delete'
-//           style={{
-//             height: '25px',
-//             width: '25px',
-//             padding: '0px',
-//             margin: '0px 10px 0px 0px',
-//           }}
-//         />
-//       </Link>
-//       {'|'}
-//       <Link
-//         to={`/edit/${props.element._id}/${localStorage.getItem(
-//           'username'
-//         )}/title=${props.element.title}&content=${props.element.content}`}>
-//         <Logo1
-//           className=' Edit-n-Delete'
-//           style={{
-//             height: '25px',
-//             width: '25px',
-//             padding: '0px',
-//             margin: '0px 0px 0px 10px',
-//           }}
-//         />
-//       </Link>
-//       <hr />
-//     </div>
-//   )
-// }
 
 export default class blogListComponent extends Component {
   constructor(props) {

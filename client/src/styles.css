@@ -36,10 +36,21 @@ footer p {
   height: 2.7rem;
   width: 2rem;
   padding: 0px;
-  fill: red;
+  fill: white;
+}
+.logout-btn:hover {
+  fill: maroon;
 }
 
 .user {
   display: inline-block;
   text-align: center;
+}
+
+.social-media-Linkedin:hover {
+  fill: #0072b1;
+  /* 6cc644 */
+}
+.social-media-Github:hover {
+  fill: #6cc644;
 }
