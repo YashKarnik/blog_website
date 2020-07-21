@@ -21,9 +21,9 @@ app.use('/blog', require('./routes/blog'))
 app.use('/auth', require('./routes/auth'))
 app.use('/feedback', require('./routes/feedback'))
 
-// app.use(express.static('client/build'))
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, './client/build/index.html')) // relative path
-// })
+app.use(express.static('client/build'))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html')) // relative path
+})
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
