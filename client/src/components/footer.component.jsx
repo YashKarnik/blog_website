@@ -4,7 +4,7 @@ export default function footerComponent() {
   const year = new Date().getFullYear()
   return (
     <footer>
-      <p>Copyright ⓒ {year} | Yash Karnik</p>
+      <p>Copyright (Not really) ⓒ {year} | Yash Karnik</p>
     </footer>
   )
 }

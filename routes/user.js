@@ -5,10 +5,27 @@ const User = require('../models/user.model')
 const Blog = require('../models/blog.model')
 const authMiddleware = require('../middleware/auth.middleware')
 
-Router.route('/').get((req, res) => {
+Router.route('/').get(authMiddleware, (req, res) => {
   User.find()
     .then((users) => res.json(users))
     .catch((err) => res.json(`ERROR!!! ${err}`))
+})
+Router.route('/:id').get(authMiddleware, (req, res) => {
+  User.find({ _id: req.params.id })
+    .then((users) => res.json(users))
+    .catch((err) => res.json(`ERROR!!! ${err}`))
+})
+
+Router.route('/change-visibility').post(authMiddleware, (req, res) => {
+  const { flag } = req.body
+  User.findByIdAndUpdate(res.userID.id, { visibility: flag })
+    .then((users) => {
+      res.status(200).json({ msg: !users.visibility })
+      // console.log(users)
+    })
+    .catch((err) => {
+      res.json({ err: err })
+    })
 })
 
 Router.route('/delete').delete(authMiddleware, (req, res) => {

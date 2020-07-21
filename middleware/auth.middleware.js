@@ -9,6 +9,6 @@ module.exports = function (req, res, next) {
     res.userID = decoded
     next()
   } catch (e) {
-    res.status(400).json({ msg: 'Bad Request' })
+    res.status(400).json({ msg: 'Bad Request', e })
   }
 }

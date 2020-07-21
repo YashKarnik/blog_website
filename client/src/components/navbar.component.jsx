@@ -19,8 +19,10 @@ export default function navbarComponent(props) {
           />
 
           <li className='navbar-item'>
-            <Link to={`/${props.username}/myBlogs`} className='navbar-brand'>
-              Hi, @{props.username || localStorage.getItem('username')}
+            <Link
+              to={`/${localStorage.getItem('username')}/myBlogs`}
+              className='navbar-brand'>
+              Hi, @{localStorage.getItem('name')}
             </Link>
           </li>
           <li className='navbar-item'>
@@ -28,6 +30,13 @@ export default function navbarComponent(props) {
               to={'/' + localStorage.getItem('username') + '/create'}
               className='nav-link'>
               Create new post
+            </Link>
+          </li>
+          <li className='navbar-item'>
+            <Link
+              to={'/' + localStorage.getItem('username') + '/allusers'}
+              className='nav-link'>
+              Show all users
             </Link>
           </li>
           <li className='navbar-item'>

@@ -40,6 +40,7 @@ function BlogEntry(props) {
   return (
     <div>
       <h3 style={{ margin: '0px 0px 0px 10px' }}>{props.element.title}</h3>
+      {console.log(props.element)}
       {displayContent(props.element.content)}
       <em style={{ margin: '0px 0px 0px 10px' }}>
         Created on: {props.element.createdAt.substring(0, 10)}
@@ -74,12 +75,19 @@ function BlogEntry(props) {
       {!readMoreFlag && props.element.content.length > 100 && (
         <span>{'|'}</span>
       )}
-      <Link
-        to={`myBlogs/title=${props.element.title}&content=${props.element.content}`}>
+      <Link to={`myBlogs/${props.element._id}`}>
         {' '}
         <Logo2 className=' Edit-n-Delete' />
       </Link>{' '}
-      <hr />
+      <span>{'|'}</span>
+      <Link to={`myBlogs/${props.element._id}`}>
+        <font size='4' style={{ marginLeft: '10px' }}>
+          {props.element.likes} {props.element.likes === 1 ? 'like' : 'likes'}
+          <span> & </span>
+          {props.element.comments.length}{' '}
+          {props.element.comments.length === 1 ? 'comment' : 'comments'} <hr />
+        </font>
+      </Link>
     </div>
   )
 }

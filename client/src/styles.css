@@ -17,8 +17,26 @@ footer {
   color: gray;
 }
 
-.Edit-n-Delete:hover {
-  fill: blue;
+.postcommentBtn {
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
+.specialHR {
+  overflow: visible; /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double #333;
+  color: #333;
+  text-align: center;
+}
+.specialHR::after {
+  content: '§';
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background: whitesmoke;
 }
 
 .Edit-n-Delete {
@@ -26,6 +44,17 @@ footer {
   width: 25px;
   padding: 0px;
   margin: 0px 10px 0px 10px;
+}
+.Edit-n-Delete:hover {
+  fill: blue;
+}
+.remove-comment-btn {
+  height: 35px;
+  width: 35px;
+  padding: 0px;
+}
+.remove-comment-btn:hover {
+  fill: red;
 }
 
 .logout-btn {

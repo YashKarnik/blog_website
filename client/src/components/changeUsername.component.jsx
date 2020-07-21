@@ -45,11 +45,11 @@ export default class changeUsernameComponent extends Component {
             this.setState({ invalidUsername: true })
           else {
             this.setState({ changeSuccess: true })
-            localStorage.setItem('username', this.state.username)
+            localStorage.setItem('name', this.state.username)
             setInterval(
               () =>
                 (window.location =
-                  '/' + localStorage.getItem('username') + '/myBlogs'),
+                  '/' + localStorage.getItem('name') + '/myBlogs'),
               1000
             )
           }

@@ -31,7 +31,8 @@ export default class Login extends Component {
       Axios.post('/auth', { email, password })
         .then((res) => {
           localStorage.setItem('token', res.data.token)
-          localStorage.setItem('username', res.data.user.username)
+          localStorage.setItem('username', res.data.user._id)
+          localStorage.setItem('name', res.data.user.username)
           console.log(res.data.user, localStorage.getItem('token'))
           this.setState({ email: '', password: '' })
           window.location = '/' + localStorage.getItem('username') + '/myBlogs'

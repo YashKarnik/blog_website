@@ -18,7 +18,11 @@ export default class blogListComponent extends Component {
     Axios.get(`/blog/all-blogs`, {
       headers: { 'x-auth-token': localStorage.getItem('token') },
     })
-      .then((res) => this.setState({ obtainedData: res.data }))
+      .then((res) =>
+        this.setState({ obtainedData: res.data }, () =>
+          console.log(this.state.obtainedData)
+        )
+      )
       .catch((err) => console.log(err))
   }
   deleteBlogPost(id) {
@@ -26,7 +30,7 @@ export default class blogListComponent extends Component {
       headers: { 'x-auth-token': localStorage.getItem('token') },
     })
       .then((res) => {
-        console.log(res, 'deleted')
+        // console.log(res, 'deleted')
         this.setState({
           obtainedData: this.state.obtainedData.filter((el) => el._id !== id),
         })
@@ -38,7 +42,7 @@ export default class blogListComponent extends Component {
     return (
       <div>
         {' '}
-        <Navbar username={localStorage.getItem('username')} />
+        <Navbar username={localStorage.getItem('name')} />
         <br />
         {this.state.obtainedData.length === 0 ? (
           <div className='alert alert-info'>
