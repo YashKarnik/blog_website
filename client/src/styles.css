@@ -49,9 +49,10 @@ footer {
   fill: blue;
 }
 .remove-comment-btn {
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 30px;
   padding: 0px;
+  margin-bottom: 5px;
 }
 .remove-comment-btn:hover {
   fill: red;

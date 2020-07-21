@@ -19,18 +19,18 @@ const CommentEntry = (props) => {
             <p>@ [deleted]</p>
           )}
         </font>
-        <i style={{ marginRight: '900px' }}>
+        <i style={{ marginRight: '10px' }}>
           {localStorage.getItem('name') === props.username && '(You) '}
           {localStorage.getItem('name') === props.username && <b>&middot;</b>}
-
           {props.createdAt.substring(0, 10)}
         </i>
-        {props.username === localStorage.getItem('name') && (
+        {props.userID === localStorage.getItem('username') && (
           <Link
             to='#'
             onClick={() =>
               props.deleteCommentProp(props.BlogID, props.CommentID)
             }>
+            <b>&middot;</b>
             <Logo1 className='remove-comment-btn' />
           </Link>
         )}
@@ -127,11 +127,13 @@ export default function CommentsComponent(props) {
       )}
       {/* {props.comments || props.comments.length === 0 ? ( */}
       {props.comments.map((e, i) => {
+        console.log(e)
         return (
           <CommentEntry
             key={i}
             content={e.content}
             username={e.PosterUsername}
+            userID={e.PosterID}
             createdAt={e.createdAt}
             CommentID={e._id}
             BlogID={e.BlogID}
