@@ -35,6 +35,7 @@ export default function OtherUserBlogPageFullComponent(props) {
       <br />
       <h3>Posted By @{username}</h3>
       <hr />
+
       {blogDetails ? (
         blogDetails.map((e, i) => {
           return (

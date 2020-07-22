@@ -47,8 +47,8 @@ export default class App extends Component {
             component={EditBlog}
           />
           <Route path='/credits' exact component={Credits} />
+          <Footer />
         </div>
-        <Footer />
       </Router>
     )
   }

@@ -3,6 +3,7 @@ import Navbar from './navbar.component'
 import Axios from 'axios'
 import { ReactComponent as Logo } from '../assets/add.svg'
 import { Link } from 'react-router-dom'
+import { ReactComponent as Logo1 } from '../assets/link.svg'
 import BlogEntry from './blogEntry.component'
 
 export default class blogListComponent extends Component {
@@ -18,11 +19,7 @@ export default class blogListComponent extends Component {
     Axios.get(`/blog/all-blogs`, {
       headers: { 'x-auth-token': localStorage.getItem('token') },
     })
-      .then((res) =>
-        this.setState({ obtainedData: res.data }, () =>
-          console.log(this.state.obtainedData)
-        )
-      )
+      .then((res) => this.setState({ obtainedData: res.data }))
       .catch((err) => console.log(err))
   }
   deleteBlogPost(id) {
@@ -50,7 +47,19 @@ export default class blogListComponent extends Component {
             <Link to={`/${localStorage.getItem('username')}/create`}>here</Link>{' '}
             to create first post
           </div>
-        ) : null}
+        ) : (
+          <div class='alert alert-secondary' role='alert'>
+            <strong>
+              {' '}
+              Click on the
+              <Logo1
+                className=' Edit-n-Delete'
+                style={{ height: '20px', width: '20px' }}
+              />
+              to like and post comments
+            </strong>
+          </div>
+        )}
         {this.state.obtainedData.map((element, index) => {
           return (
             <BlogEntry

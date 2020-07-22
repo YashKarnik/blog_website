@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function OtherUserComponent(props) {
   const [userData, setUserData] = useState({})
   const [blogData, setBlogData] = useState({})
-  const [readMore, setReadMore] = useState({ id: '', flag: false })
+  // const [readMore, setReadMore] = useState({ id: '', flag: false })
   useEffect(() => {
     Axios.get(`/user/${props.match.params.OtherUserId}`, {
       headers: { 'x-auth-token': localStorage.getItem('token') },
@@ -26,6 +26,15 @@ export default function OtherUserComponent(props) {
         </div>
       )}
       <hr className='specialHR' />
+      {blogData.length === 0 ? (
+        <div class='alert alert-secondary' role='alert'>
+          <strong> No posts yet by @{userData.username}</strong>
+        </div>
+      ) : (
+        <div class='alert alert-secondary' role='alert'>
+          <strong> Click on the blog title to like and post comments</strong>
+        </div>
+      )}
       {blogData[0] &&
         blogData.map((e, i) => {
           return (
