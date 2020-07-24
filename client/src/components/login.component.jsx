@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Alert from './alert.component'
 import Axios from 'axios'
+import { ReactComponent as Logo } from '../assets/eye.svg'
+import { ReactComponent as Logo1 } from '../assets/hidden.svg'
 
 export default class Login extends Component {
   constructor(props) {
@@ -10,6 +12,7 @@ export default class Login extends Component {
       password: '',
       emptyFieldsFlag: false,
       incorrectFieldsFlag: false,
+      showPasswordFlag: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -71,14 +74,47 @@ export default class Login extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <input
-            className='form-control'
-            placeholder='Password'
-            name='password'
-            type='password'
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
+          <div className='input-group mb-3'>
+            <input
+              className='form-control'
+              placeholder='Password'
+              name='password'
+              type={this.state.showPasswordFlag ? 'text' : 'password'}
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+            <button
+              className='input-group-append btn btn-secondary postcommentBtn'
+              type='button'
+              onClick={() =>
+                this.setState((p) => {
+                  return { ...p, showPasswordFlag: !p.showPasswordFlag }
+                })
+              }>
+              {this.state.showPasswordFlag ? (
+                <Logo
+                  style={{
+                    height: '1.3rem',
+                    width: '1.3rem',
+                    padding: '0px',
+                    margin: '0px 7px 0px 5px',
+                    fill: 'white',
+                  }}
+                />
+              ) : (
+                <Logo1
+                  style={{
+                    height: '1.3rem',
+                    width: '1.3rem',
+                    padding: '0px',
+                    margin: '0px 7px 0px 5px',
+                    fill: 'white',
+                  }}
+                />
+              )}
+            </button>
+          </div>
+
           <br />
           <button className='btn btn-primary btn-lg btn-block' type='Submit'>
             Login
