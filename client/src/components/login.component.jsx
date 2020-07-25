@@ -3,6 +3,7 @@ import Alert from './alert.component'
 import Axios from 'axios'
 import { ReactComponent as Logo } from '../assets/eye.svg'
 import { ReactComponent as Logo1 } from '../assets/hidden.svg'
+import { Spring, config } from 'react-spring/renderprops'
 
 export default class Login extends Component {
   constructor(props) {
@@ -45,83 +46,94 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <div className='container'>
-        <h1>Login</h1>
-        {this.state.emptyFieldsFlag ? (
-          <Alert
-            message='Empty fields Disallowed!'
-            type='danger'
-            clickedProp={this.resetAlertFlagFunction}
-            flag='emptyFieldsFlag'
-          />
-        ) : null}
-        {this.state.incorrectFieldsFlag ? (
-          <Alert
-            message='Incorrect Credentials!'
-            type='danger'
-            clickedProp={this.resetAlertFlagFunction}
-            flag='incorrectFieldsFlag'
-          />
-        ) : null}
-        <hr />
-        <form onSubmit={this.handleSubmit} autoComplete='off'>
-          <input
-            className='form-control'
-            placeholder='Email'
-            name='email'
-            type='email'
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-          <br />
-          <div className='input-group mb-3'>
-            <input
-              className='form-control'
-              placeholder='Password'
-              name='password'
-              type={this.state.showPasswordFlag ? 'text' : 'password'}
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <button
-              className='input-group-append btn btn-secondary postcommentBtn'
-              type='button'
-              onClick={() =>
-                this.setState((p) => {
-                  return { ...p, showPasswordFlag: !p.showPasswordFlag }
-                })
-              }>
-              {this.state.showPasswordFlag ? (
-                <Logo
-                  style={{
-                    height: '1.3rem',
-                    width: '1.3rem',
-                    padding: '0px',
-                    margin: '0px 7px 0px 5px',
-                    fill: 'white',
-                  }}
+      <Spring
+        from={{ opacity: '0' }}
+        to={{ opacity: '1' }}
+        config={config.stiff}>
+        {(props) => (
+          <div style={props}>
+            <div className='container'>
+              <h1>Login</h1>
+              {this.state.emptyFieldsFlag ? (
+                <Alert
+                  message='Empty fields Disallowed!'
+                  type='danger'
+                  clickedProp={this.resetAlertFlagFunction}
+                  flag='emptyFieldsFlag'
                 />
-              ) : (
-                <Logo1
-                  style={{
-                    height: '1.3rem',
-                    width: '1.3rem',
-                    padding: '0px',
-                    margin: '0px 7px 0px 5px',
-                    fill: 'white',
-                  }}
+              ) : null}
+              {this.state.incorrectFieldsFlag ? (
+                <Alert
+                  message='Incorrect Credentials!'
+                  type='danger'
+                  clickedProp={this.resetAlertFlagFunction}
+                  flag='incorrectFieldsFlag'
                 />
-              )}
-            </button>
-          </div>
+              ) : null}
+              <hr />
+              <form onSubmit={this.handleSubmit} autoComplete='off'>
+                <input
+                  className='form-control'
+                  placeholder='Email'
+                  name='email'
+                  type='email'
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <div className='input-group mb-3'>
+                  <input
+                    className='form-control'
+                    placeholder='Password'
+                    name='password'
+                    type={this.state.showPasswordFlag ? 'text' : 'password'}
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                  <button
+                    className='input-group-append btn btn-secondary postcommentBtn'
+                    type='button'
+                    onClick={() =>
+                      this.setState((p) => {
+                        return { ...p, showPasswordFlag: !p.showPasswordFlag }
+                      })
+                    }>
+                    {this.state.showPasswordFlag ? (
+                      <Logo
+                        style={{
+                          height: '1.3rem',
+                          width: '1.3rem',
+                          padding: '0px',
+                          margin: '0px 7px 0px 5px',
+                          fill: 'white',
+                        }}
+                      />
+                    ) : (
+                      <Logo1
+                        style={{
+                          height: '1.3rem',
+                          width: '1.3rem',
+                          padding: '0px',
+                          margin: '0px 7px 0px 5px',
+                          fill: 'white',
+                        }}
+                      />
+                    )}
+                  </button>
+                </div>
 
-          <br />
-          <button className='btn btn-primary btn-lg btn-block' type='Submit'>
-            Login
-          </button>
-          <br />
-        </form>
-      </div>
+                <br />
+                <button
+                  className='btn btn-primary btn-lg btn-block'
+                  type='Submit'>
+                  Login
+                </button>
+                <br />
+              </form>
+            </div>
+          </div>
+        )}
+      </Spring>
     )
   }
 }
