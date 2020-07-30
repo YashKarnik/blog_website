@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Alert from './alert.component'
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../assets/eye.svg'
 import { ReactComponent as Logo1 } from '../assets/hidden.svg'
 import generatePassword from 'password-generator'
@@ -17,6 +18,7 @@ export default class Login extends Component {
       invalidFieldsFlag: false,
       containsAmersand: false,
       showPasswordFlag: false,
+      forgotPasswordFlag: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -164,6 +166,9 @@ export default class Login extends Component {
                 </button>
                 <br />
               </form>
+              <div className='Links-below-form'>
+                <Link to='/Login'>Already have an account?Click here</Link>
+              </div>
             </div>
           </div>
         )}

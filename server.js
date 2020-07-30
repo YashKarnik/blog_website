@@ -20,6 +20,7 @@ app.use('/user', require('./routes/user'))
 app.use('/blog', require('./routes/blog'))
 app.use('/auth', require('./routes/auth'))
 app.use('/feedback', require('./routes/feedback'))
+app.use('/recovery', require('./routes/recovery'))
 
 app.use(express.static('client/build'))
 app.get('*', (req, res) => {

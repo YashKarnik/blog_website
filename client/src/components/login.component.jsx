@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Alert from './alert.component'
+import ForgotPasswordForm from './forgotPassword.component'
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../assets/eye.svg'
 import { ReactComponent as Logo1 } from '../assets/hidden.svg'
 import { Spring, config } from 'react-spring/renderprops'
@@ -14,6 +16,7 @@ export default class Login extends Component {
       emptyFieldsFlag: false,
       incorrectFieldsFlag: false,
       showPasswordFlag: false,
+      forgotPasswordFlag: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -130,6 +133,21 @@ export default class Login extends Component {
                 </button>
                 <br />
               </form>
+              <div className='Links-below-form'>
+                <Link to='/Register'>Dont Have an account?Click here</Link>
+                <br />
+                <Link
+                  to='#'
+                  onClick={() =>
+                    this.setState((p) => {
+                      return { ...p, forgotPasswordFlag: !p.forgotPasswordFlag }
+                    })
+                  }>
+                  Forgot Paassword?
+                </Link>
+
+                {this.state.forgotPasswordFlag && <ForgotPasswordForm />}
+              </div>
             </div>
           </div>
         )}

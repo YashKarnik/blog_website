@@ -80,3 +80,8 @@ body {
 .social-media-Github:hover {
   fill: #6cc644;
 }
+
+.Links-below-form {
+  display: block;
+  text-align: center;
+}
