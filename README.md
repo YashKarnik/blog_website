@@ -13,12 +13,11 @@
 
 ## Technologies used
 * node.js
-* express.js (Backend)
 * NoSQL Database (MongoDB)
 * HTML, CSS(Bootstrap), Javascript (react.js)
 
 ## External packages used
-* Front end
+* Backend
   * axios.js (HTTP requests)
   * jsonwebtoken.js (TOken handling for authentication and authorization)
   * mongoose.js (Wrapper classes and functions to easily interface MongoDB with node.js)
